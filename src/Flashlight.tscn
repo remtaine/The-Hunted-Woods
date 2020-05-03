@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/light/spot.png" type="Texture" id=2]
+[ext_resource path="res://art/placeholders/black.png" type="Texture" id=3]
+
+[node name="Flashlight" type="Node2D"]
+
+[node name="Handle" type="Sprite" parent="."]
+scale = Vector2( 0.4, 0.2 )
+texture = ExtResource( 3 )
+
+[node name="LightBlob" type="Sprite" parent="."]
+position = Vector2( 7, -0.713478 )
+scale = Vector2( 0.1, 0.15 )
+texture = ExtResource( 2 )
