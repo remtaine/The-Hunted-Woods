@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=2]
+
+[sub_resource type="TileSet" id=1]
+
+[sub_resource type="TileSet" id=6]
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 80, 48, 16, 48, 16, 0, 80, 0 )
+
+[sub_resource type="StreamTexture" id=8]
+flags = 4
+load_path = "res://.import/TileB_PHC_Exterior-City.png-75ea4b6dda52f40dfe662946aabefdf8.stex"
+
+[sub_resource type="StreamTexture" id=9]
+flags = 4
+load_path = "res://.import/PSF_A5_Forest.png-dce95c0abf41ff9061495f9471ed5677.stex"
+
+[sub_resource type="TileSet" id=7]
+0/name = "TileB_PHC_Exterior-City.png 0"
+0/texture = SubResource( 8 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 96, 80, 48 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "PSF_A5_Forest.png 1"
+1/texture = SubResource( 9 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 48, 64, 48, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=5]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="BackgroundTileMap" type="TileMap" parent="TileMap"]
+tile_set = SubResource( 6 )
+format = 1
+
+[node name="ForegroundTileMap" type="TileMap" parent="TileMap"]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 46, 1, 0, 65582, 1, 0, 131118, 1, 0, 196654, 1, 0, 262190, 1, 0, 327726, 1, 0, 393262, 1, 0, 458798, 1, 0, 524334, 1, 0, 589870, 1, 0, 655406, 1, 0, 720942, 1, 0, 786478, 1, 0, 852014, 1, 0, 917550, 1, 0, 983086, 1, 0, 1048622, 1, 0, 1114158, 1, 0, 1179694, 1, 0, 1245230, 1, 0, 1310744, 0, 0, 1310766, 1, 0, 1376302, 1, 0, 1441838, 1, 0, 1507374, 1, 0, 1572910, 1, 0 )
+
+[node name="OvergroundTileMap" type="TileMap" parent="TileMap"]
+tile_set = SubResource( 5 )
+format = 1

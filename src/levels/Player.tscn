@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://art/characters/PSF_HeroesA_Casual.png" type="Texture" id=1]
 [ext_resource path="res://src/levels/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/Flashlight.tscn" type="PackedScene" id=3]
-[ext_resource path="res://art/light/light.png" type="Texture" id=4]
+[ext_resource path="res://art/light/arclight2.png" type="Texture" id=4]
+[ext_resource path="res://art/light/light2.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -713,7 +714,7 @@ tracks/5/keys = {
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -27.4475 )
+position = Vector2( 0.500687, -27.9872 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 12
@@ -734,9 +735,6 @@ anims/walk_left = SubResource( 4 )
 anims/walk_right = SubResource( 5 )
 anims/walk_up = SubResource( 6 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( -12.9721, -11.5822 )
 
@@ -745,6 +743,16 @@ position = Vector2( -8.0986, -7.48735 )
 rotation = 1.5708
 
 [node name="SelfLight" type="Light2D" parent="."]
-position = Vector2( 0, -24.5543 )
+position = Vector2( -0.815624, -24.5543 )
 texture = ExtResource( 4 )
-texture_scale = 0.42
+texture_scale = 0.08
+
+[node name="ArcLight" type="Light2D" parent="."]
+visible = false
+position = Vector2( -7.32924, 73.8538 )
+texture = ExtResource( 5 )
+texture_scale = 0.1
+energy = 0.8
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true

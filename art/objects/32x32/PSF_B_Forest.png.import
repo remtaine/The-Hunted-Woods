@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TileB_PHC_Exterior-City.png-75ea4b6dda52f40dfe662946aabefdf8.stex"
+path="res://.import/PSF_B_Forest.png-ab02ec4678c0591ba962f24aa054055d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/objects/TileB_PHC_Exterior-City.png"
-dest_files=[ "res://.import/TileB_PHC_Exterior-City.png-75ea4b6dda52f40dfe662946aabefdf8.stex" ]
+source_file="res://art/objects/32x32/PSF_B_Forest.png"
+dest_files=[ "res://.import/PSF_B_Forest.png-ab02ec4678c0591ba962f24aa054055d.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

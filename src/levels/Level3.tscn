@@ -1,0 +1,171 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://src/levels/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/PlaceholderMaze.tscn" type="PackedScene" id=2]
+[ext_resource path="res://art/objects/32x32/32X32 TileB_PHC_Exterior-City.png" type="Texture" id=3]
+[ext_resource path="res://src/ForestCanvasModulate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://art/tilesets/Slasher Forest V5.png" type="Texture" id=5]
+[ext_resource path="res://art/objects/32x32/PSF_B_Forest.png" type="Texture" id=6]
+[ext_resource path="res://src/objects/Car.tscn" type="PackedScene" id=7]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 64, 128, 0, 128, 0, 64, 64, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 96, 128, 0, 128, 0, 64, 96, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 64, 96, 0, 96, 0, 64, 64, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 64, 128, 0, 128, 0, 0, 64, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 96, 128, 0, 128, 0, 0, 96, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 96, 96, 0, 96, 0, 0, 96, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 64, 96, 0, 96, 0, 0, 64, 0 )
+
+[sub_resource type="TileSet" id=8]
+0/name = "PSF_B_Forest.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 256, 256, 64, 128 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "PSF_B_Forest.png 1"
+1/texture = ExtResource( 6 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 256, 384, 96, 128 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "PSF_B_Forest.png 2"
+2/texture = ExtResource( 6 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 352, 416, 64, 96 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "PSF_B_Forest.png 3"
+3/texture = ExtResource( 6 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 320, 256, 64, 128 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "PSF_B_Forest.png 4"
+4/texture = ExtResource( 6 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 416, 384, 96, 128 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+5/name = "32X32 TileB_PHC_Exterior-City.png 5"
+5/texture = ExtResource( 3 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 64, 192, 96, 96 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0
+6/name = "32X32 TileB_PHC_Exterior-City.png 6"
+6/texture = ExtResource( 3 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 160, 192, 64, 96 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+6/z_index = 0
+
+[node name="Level3" type="Node2D"]
+
+[node name="ForegroundTileMap" type="TileMap" parent="."]
+tile_set = SubResource( 8 )
+cell_size = Vector2( 32, 32 )
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( 2162705, 0, 0, 4128792, 0, 0, 4128794, 0, 0, 4128796, 0, 0, 4128798, 0, 0, 4128800, 0, 0, 4128802, 0, 0, 4128804, 0, 0, 4194330, 0, 0, 4194332, 0, 0, 4194334, 0, 0, 4194336, 0, 0, 4194338, 0, 0, 4259865, 3, 0, 4259867, 3, 0, 4259869, 3, 0, 4259871, 3, 0, 4259873, 3, 0, 4259875, 3, 0, 4325411, 3, 0, 4390932, 0, 0, 4390934, 0, 0, 4390936, 0, 0, 4390938, 0, 0, 4390940, 0, 0, 4390942, 0, 0, 4390944, 0, 0, 4390946, 0, 0, 4390948, 0, 0, 4456474, 2, 0, 4456476, 2, 0, 4456478, 2, 0, 4522004, 0, 0, 4718621, 6, 0, 4718623, 5, 0, 4718630, 5, 0 )
+
+[node name="Sprite" parent="." instance=ExtResource( 2 )]
+visible = false
+modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 1200, 1200 )
+
+[node name="ForestCanvasModulate" parent="." instance=ExtResource( 4 )]
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 1242.24, 2940.81 )
+texture = ExtResource( 5 )
+
+[node name="Player" parent="Sprite2" instance=ExtResource( 1 )]
+position = Vector2( -88.3195, -626.762 )
+
+[node name="Car" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1418.28, 2233.38 )
+scale = Vector2( 1.38212, 1.07998 )
