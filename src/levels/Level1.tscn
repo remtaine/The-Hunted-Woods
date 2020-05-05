@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://art/tilesets/Slasher Forest V5.png" type="Texture" id=1]
+[ext_resource path="res://art/placeholders/Slasher Forest V5.png" type="Texture" id=1]
 [ext_resource path="res://src/levels/Level.gd" type="Script" id=2]
-[ext_resource path="res://src/levels/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/ForestCanvasModulate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/characters/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/helpers/ForestCanvasModulate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/objects/Portal.tscn" type="PackedScene" id=5]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 2 )
@@ -19,3 +20,7 @@ texture = ExtResource( 1 )
 position = Vector2( 474.359, 163.639 )
 
 [node name="ForestCanvasModulate" parent="." instance=ExtResource( 4 )]
+
+[node name="Portal" parent="." instance=ExtResource( 5 )]
+position = Vector2( 662.489, -296.609 )
+scale = Vector2( 4.44082, 1.28 )

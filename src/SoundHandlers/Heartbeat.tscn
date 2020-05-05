@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/SoundHandlers/Heartbeat.gd" type="Script" id=1]
+[ext_resource path="res://sounds/player/heartbeat/Heartbeat slow 54BPM.wav" type="AudioStream" id=2]
+[ext_resource path="res://sounds/player/heartbeat/Heartbeat very fast 115BPM.wav" type="AudioStream" id=3]
+[ext_resource path="res://sounds/player/heartbeat/Heartbeat medium 75BPM.wav" type="AudioStream" id=4]
+[ext_resource path="res://sounds/player/heartbeat/Heartbeat fast 101BPM.wav" type="AudioStream" id=5]
+
+[node name="Heartbeat" type="Node2D"]
+position = Vector2( -3.8147e-06, -89.2857 )
+rotation = -2.74889
+scale = Vector2( 3.57143, 3.57143 )
+script = ExtResource( 1 )
+
+[node name="SlowHRAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+volume_db = -1.0
+
+[node name="MediumHRAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="FastHRAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="VeryFastHRAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]

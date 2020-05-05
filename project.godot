@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Character",
 "language": "GDScript",
-"path": "res://src/Character.gd"
+"path": "res://src/characters/Character.gd"
 } ]
 _global_script_class_icons={
 "Character": ""
@@ -23,6 +23,10 @@ _global_script_class_icons={
 config/name="Slasher Forest"
 run/main_scene="res://src/levels/Level3.tscn"
 config/icon="res://art/characters/PSF_HeroesA_Casual.png"
+
+[autoload]
+
+SceneChanger="*res://src/helpers/SceneChanger.tscn"
 
 [display]
 
@@ -69,6 +73,18 @@ shoot={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_render/layer_1="light"
+2d_physics/layer_1="Player"
+2d_render/layer_2="occluder"
+2d_physics/layer_2="Background"
+2d_physics/layer_3="Foreground"
+2d_physics/layer_4="Overground"
+2d_physics/layer_5="Enemy"
+2d_physics/layer_6="Object"
+2d_physics/layer_7="Damager"
 
 [rendering]
 

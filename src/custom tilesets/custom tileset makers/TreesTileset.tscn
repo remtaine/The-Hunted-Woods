@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/object tilesets/32x32 Horror Green Forest.png" type="Texture" id=1]
+[ext_resource path="res://art/object tilesets/32x32 Horror Forest EDITED.png" type="Texture" id=2]
+
+[node name="TreesTileset" type="Node2D"]
+
+[node name="Green Forest1" type="Sprite" parent="."]
+position = Vector2( 117.453, 190.861 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 264, 32, 88, 128 )
+
+[node name="Green Forest2" type="Sprite" parent="."]
+position = Vector2( 226.096, 205.542 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 416, 0, 64, 96 )
+
+[node name="Green Forest3" type="Sprite" parent="."]
+position = Vector2( 384.657, 184.988 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 256, 160, 128, 192 )
+
+[node name="Green Forest4" type="Sprite" parent="."]
+position = Vector2( 566.709, 176.179 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 256, 352, 128, 160 )
+
+[node name="Green Forest5" type="Sprite" parent="."]
+position = Vector2( 742.888, 161.497 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 384, 352, 128, 160 )
+
+[node name="Green Forest6" type="Sprite" parent="."]
+position = Vector2( 93.9621, 411.084 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 384, 160, 128, 192 )
+
+[node name="32x32 Horror Green Forest" type="Sprite" parent="Green Forest6"]
+position = Vector2( 594.583, -233.825 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 256, 352, 128, 160 )
+
+[node name="Forest 1" type="Sprite" parent="."]
+position = Vector2( 267.205, 434.575 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 256, 272, 64, 96 )
+
+[node name="Forest 2" type="Sprite" parent="."]
+position = Vector2( 381.721, 419.893 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 320, 256, 64, 128 )
+
+[node name="Forest 3" type="Sprite" parent="."]
+position = Vector2( 537.346, 422.83 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 256, 384, 96, 128 )
+
+[node name="Forest 4" type="Sprite" parent="."]
+position = Vector2( 687.098, 408.148 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 352, 416, 64, 96 )
+
+[node name="Forest 5" type="Sprite" parent="."]
+position = Vector2( 839.786, 446.32 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 416, 384, 96, 128 )

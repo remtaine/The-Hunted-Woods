@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://art/object tilesets/32x32 Horror Walls.png" type="Texture" id=1]
+
+[node name="WallTileset" type="Node2D"]
+position = Vector2( 0, -48 )
+
+[node name="Walls" type="Sprite" parent="."]
+position = Vector2( 675.937, 1457.36 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 640, 128, 128 )
+
+[node name="Walls2" type="Sprite" parent="."]
+position = Vector2( 688, 1600 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 640, 192, 128 )

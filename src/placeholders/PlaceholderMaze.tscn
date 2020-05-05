@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://art/placeholders/mazes/improved maze v1.png" type="Texture" id=1]
+
+[node name="PlaceholderMaze" type="Sprite"]
+modulate = Color( 1, 1, 1, 0.266667 )
+scale = Vector2( 16, 16 )
+texture = ExtResource( 1 )

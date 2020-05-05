@@ -1,5 +1,0 @@
-[gd_scene format=2]
-
-[node name="ForestCanvasModulate" type="CanvasModulate"]
-rotation = 1.5708
-color = Color( 0.27451, 0.27451, 0.27451, 1 )

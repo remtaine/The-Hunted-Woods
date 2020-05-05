@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/leaves rustle v1-001.wav-3066b890ec6303e93bf6010715c52faa.sample"
+
+[deps]
+
+source_file="res://sounds/objects/leaves rustle v1-001.wav"
+dest_files=[ "res://.import/leaves rustle v1-001.wav-3066b890ec6303e93bf6010715c52faa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
