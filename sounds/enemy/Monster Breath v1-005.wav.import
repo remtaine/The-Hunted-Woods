@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Monster Breath v1-005.wav-4ad1d5b1d40d2feae7e097e030bf5433.sample"
+
+[deps]
+
+source_file="res://sounds/enemy/Monster Breath v1-005.wav"
+dest_files=[ "res://.import/Monster Breath v1-005.wav-4ad1d5b1d40d2feae7e097e030bf5433.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

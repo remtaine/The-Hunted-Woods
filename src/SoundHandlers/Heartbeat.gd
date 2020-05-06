@@ -18,7 +18,7 @@ onready var CDTimer = $CooldownTimer
 
 func _ready():
 	pass
-	
+
 func play_heart_sound():
 	match heart_level:
 		HEART_LEVELS.SLOW:
@@ -53,12 +53,16 @@ func increase_heart_rate():
 	play_heart_sound()
 	CDTimer.start()
 
+func got_scared():
+	increase_heart_rate()
+
 func decrease_heart_rate():
 	if heart_level <= HEART_LEVELS.NONE:
 		return
 	stop_heart_sound()
 	heart_level -= 1
 	play_heart_sound()
+	print("COOLED DOWN MY HEAR FOR REALZ")
 
 func _on_CooldownTimer_timeout():
 	print("COOLED DOWN")

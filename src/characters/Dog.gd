@@ -100,7 +100,6 @@ func get_event(input):
 		return EVENTS.STOP
 		
 func enter_state():
-	print("ENTERING STATE ", _state)
 	match _state:
 		STATES.RUN, STATES.WALK:
 			_speed = SPEEDS[_state]
@@ -122,7 +121,6 @@ func get_input_direction():
 #	var new_x = float(Input.is_action_pressed("move_right")) - float(Input.is_action_pressed("move_left"))
 #	var new_y = float(Input.is_action_pressed("move_down")) - float(Input.is_action_pressed("move_up"))
 #	var new_dir = Vector2(new_x, new_y)
-#	print(new_dir)
 #	return new_dir
 	if Input.is_action_pressed("move_up") and (last_pressed == "move_up" or not Input.is_action_pressed(last_pressed)):
 		last_pressed = "move_up"

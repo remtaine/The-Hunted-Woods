@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://art/characters/PSF_HeroesA_Casual.png" type="Texture" id=1]
 [ext_resource path="res://src/characters/Player.gd" type="Script" id=2]
@@ -6,7 +6,10 @@
 [ext_resource path="res://art/light/white circle light.png" type="Texture" id=4]
 [ext_resource path="res://art/placeholders/white.png" type="Texture" id=5]
 [ext_resource path="res://src/SoundHandlers/Heartbeat.tscn" type="PackedScene" id=6]
-[ext_resource path="res://sounds/player/player footsteps v1-001.wav" type="AudioStream" id=8]
+[ext_resource path="res://art/light/Flashlight right v2.png" type="Texture" id=7]
+[ext_resource path="res://src/helpers/Footsteps.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/helpers/Camera2D.gd" type="Script" id=9]
+[ext_resource path="res://src/ui/Health.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
@@ -474,6 +477,23 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath("Sounds/Footsteps")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=9]
 length = 0.8
@@ -550,6 +570,23 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("Sounds/Footsteps")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -628,6 +665,23 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath("Sounds/Footsteps")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=11]
 length = 0.8
@@ -705,6 +759,23 @@ tracks/5/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath("Sounds/Footsteps")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "play"
+} ]
+}
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -717,7 +788,7 @@ position = Vector2( 0.500687, -27.9872 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 12
-frame = 37
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
 "Player",
@@ -737,44 +808,48 @@ anims/walk_left = SubResource( 9 )
 anims/walk_right = SubResource( 10 )
 anims/walk_up = SubResource( 11 )
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( -12.9721, -11.5822 )
-
 [node name="Flashlight" parent="." instance=ExtResource( 3 )]
-show_behind_parent = true
-position = Vector2( 9.02464, -16.2658 )
-rotation = 4.71239
+position = Vector2( -12, -6.025 )
+rotation = 1.5708
 
 [node name="SelfLight" type="Light2D" parent="."]
 position = Vector2( -0.815624, -24.5543 )
 texture = ExtResource( 4 )
-texture_scale = 0.1
-color = Color( 0.596078, 0.596078, 0.596078, 1 )
+texture_scale = 0.12
+mode = 2
 range_item_cull_mask = 3
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-smoothing_enabled = true
 
 [node name="ArcLightPosition" type="Position2D" parent="."]
 position = Vector2( -0.735092, -20.5826 )
 
 [node name="ArcLight" type="Light2D" parent="ArcLightPosition"]
-position = Vector2( 80.8601, 0 )
-scale = Vector2( 5, 2 )
-texture = ExtResource( 5 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 7 )
+texture_scale = 0.5
+mode = 2
 
 [node name="Sprite" type="Sprite" parent="ArcLightPosition/ArcLight"]
 visible = false
 texture = ExtResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="ArcLightPosition"]
+position = Vector2( 61.0264, 0 )
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 960
+limit_bottom = 1000
+smoothing_enabled = true
+script = ExtResource( 9 )
 
 [node name="Sounds" type="Node2D" parent="."]
 position = Vector2( -9.56717, -23.097 )
 rotation = 2.74889
 scale = Vector2( 0.28, 0.28 )
 
-[node name="Footsteps" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource( 8 )
+[node name="Footsteps" parent="Sounds" instance=ExtResource( 8 )]
 
 [node name="Heartbeat" parent="Sounds" instance=ExtResource( 6 )]
+
+[node name="Health" parent="." instance=ExtResource( 10 )]
 [connection signal="input_event" from="." to="." method="_on_Player_input_event"]

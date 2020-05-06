@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/helpers/Infinilight.gd" type="Script" id=1]
+[ext_resource path="res://art/light/white circle light.png" type="Texture" id=2]
+
+[node name="Infinilight" type="Light2D"]
+position = Vector2( 1076.62, 1188.49 )
+scale = Vector2( 3.4, 3.4 )
+texture = ExtResource( 2 )
+texture_scale = 2.0
+script = ExtResource( 1 )

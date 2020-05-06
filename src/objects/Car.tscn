@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://art/objects/32x32/32X32 TileB_PHC_Exterior-City.png" type="Texture" id=1]
+[ext_resource path="res://art/object tilesets/32X32 Horror Car EDITED.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -9,9 +9,9 @@
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 16, 180, 160, 96 )
+region_rect = Rect2( 16, 192, 144, 96 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -7.7669, 0 )
-scale = Vector2( 7.08, 3.61259 )
+position = Vector2( 0.534865, -3.77352 )
+scale = Vector2( 7.08, 4.25259 )
 shape = SubResource( 1 )

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://art/placeholders/white.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="Curve" id=2]
+
+[node name="DialogueTrigger" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_right = 240.0
+margin_bottom = 40.0
+bbcode_enabled = true
+bbcode_text = "[shake rate=10
+level=10] Well, well, look who we have here...[/shake]"
+text = " Well, well, look who we have here..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StepArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StepArea2D"]
+position = Vector2( 160, 112 )
+shape = SubResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2( 200, 304 )
+scale = Vector2( 10, 10 )
+width = 100.0
+width_curve = SubResource( 2 )
+texture = ExtResource( 1 )

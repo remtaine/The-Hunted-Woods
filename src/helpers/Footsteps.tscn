@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sounds/player/player footsteps v1-001.wav" type="AudioStream" id=1]
+[ext_resource path="res://src/helpers/Footsteps.gd" type="Script" id=2]
+[ext_resource path="res://sounds/player/player footsteps v1-002.wav" type="AudioStream" id=3]
+[ext_resource path="res://sounds/player/player footsteps v1-003.wav" type="AudioStream" id=4]
+[ext_resource path="res://sounds/player/player footsteps v1-004.wav" type="AudioStream" id=5]
+[ext_resource path="res://sounds/player/player footsteps v1-005.wav" type="AudioStream" id=6]
+
+[node name="Footsteps" type="Node"]
+script = ExtResource( 2 )
+
+[node name="FootstepsAudio1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="FootstepsAudio2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="FootstepsAudio3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="FootstepsAudio4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="FootstepsAudio5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
