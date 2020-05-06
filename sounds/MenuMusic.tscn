@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sounds/menu/menumusic.ogg" type="AudioStream" id=1]
+[ext_resource path="res://sounds/MenuMusic.gd" type="Script" id=2]
+
+[node name="MenuMusic" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+script = ExtResource( 2 )

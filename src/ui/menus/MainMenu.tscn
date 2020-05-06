@@ -1,100 +1,216 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://src/ui/buttons/CreditsButton.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Icon2.png" type="Texture" id=2]
-[ext_resource path="res://src/ui/buttons/OptionsButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/ui/buttons/NewGameButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://BebasNeue Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/custom tilesets/PlateauTileset.tres" type="TileSet" id=3]
+[ext_resource path="res://src/custom tilesets/BloodTileset.tres" type="TileSet" id=4]
 [ext_resource path="res://art/characters/32x32 Heroes Down.png" type="Texture" id=5]
 [ext_resource path="res://src/fonts/BebasNeue_18.tres" type="DynamicFont" id=6]
 [ext_resource path="res://art/object tilesets/32x32 Horror Blood.png" type="Texture" id=7]
+[ext_resource path="res://art/UI/Full Moon - background.png" type="Texture" id=8]
+[ext_resource path="res://src/ui/menus/MainMenu.gd" type="Script" id=10]
 
-[node name="MainMenu" type="Control"]
-margin_left = 80.0
-margin_top = 80.0
-margin_right = 880.0
-margin_bottom = 560.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[sub_resource type="DynamicFont" id=1]
+size = 96
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = 20
+font_data = ExtResource( 2 )
 
-[node name="Woman" type="Sprite" parent="."]
-position = Vector2( 664, 320 )
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+size = 48
+font_data = ExtResource( 2 )
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource( 10 )
+
+[node name="SpriteHolder" type="Node2D" parent="."]
+position = Vector2( 12.0914, -6.26794 )
+
+[node name="background" type="Sprite" parent="SpriteHolder"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+position = Vector2( 556.373, 398.795 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 8 )
+
+[node name="Ground" type="TileMap" parent="SpriteHolder"]
+position = Vector2( 87.0202, 74.5887 )
+scale = Vector2( 3, 3 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 196611, 19, 0, 196612, 18, 0, 196613, 18, 0, 196614, 18, 0, 196615, 18, 0, 196616, 17, 0, 262147, 21, 0, 262148, 22, 0, 262149, 22, 0, 262150, 22, 0, 262151, 22, 0, 262152, 20, 0, 327683, 21, 0, 327684, 22, 0, 327685, 22, 0, 327686, 22, 0, 327687, 22, 0, 327688, 20, 0 )
+
+[node name="Tree" type="Sprite" parent="SpriteHolder"]
+position = Vector2( 704.08, 320.755 )
+scale = Vector2( 3, 3 )
+
+[node name="body" type="Sprite" parent="SpriteHolder/Tree"]
+position = Vector2( -48, 8 )
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 8, 288, 64, 160 )
+
+[node name="end" type="Sprite" parent="SpriteHolder/Tree"]
+position = Vector2( 32, 0 )
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 96, 288, 32, 152 )
+
+[node name="mid" type="Sprite" parent="SpriteHolder/Tree"]
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 128, 288, 32, 152 )
+
+[node name="TileMap2" type="TileMap" parent="SpriteHolder"]
+position = Vector2( 87.0202, 74.5887 )
+scale = Vector2( 3, 3 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 327689, 8, 0, 393225, 8, 0, 589836, 4, 0, 589839, 3, 0, 655368, 6, 0 )
+
+[node name="Woman" type="Sprite" parent="SpriteHolder"]
+position = Vector2( 818.57, 464.226 )
 rotation = -0.174536
 scale = Vector2( 3, 3 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 200, 136, 48, 56 )
 
-[node name="Man" type="Sprite" parent="."]
-position = Vector2( 572.925, 413.036 )
+[node name="Man" type="Sprite" parent="SpriteHolder"]
+position = Vector2( 690.57, 504.226 )
 rotation = 0.149632
 scale = Vector2( 3, 3 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 136, 136, 48, 56 )
 
-[node name="Text" type="VBoxContainer" parent="."]
-margin_left = -32.0
-margin_top = -32.0
-margin_right = 366.0
-margin_bottom = 462.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-alignment = 1
+[node name="LoadingLabel" type="Label" parent="."]
+margin_left = 266.342
+margin_top = 336.189
+margin_right = 316.342
+margin_bottom = 351.189
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 1
+text = "Loading..."
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewGameButton" parent="Text" instance=ExtResource( 4 )]
-margin_top = 107.0
-margin_right = 398.0
-margin_bottom = 167.0
-
-[node name="OptionsButton" parent="Text" instance=ExtResource( 3 )]
-margin_top = 172.0
-margin_right = 398.0
-margin_bottom = 232.0
-
-[node name="CreditsButton" parent="Text" instance=ExtResource( 1 )]
-margin_top = 237.0
-margin_right = 398.0
-margin_bottom = 297.0
-
-[node name="VersionLabel" type="Label" parent="Text"]
-margin_top = 302.0
-margin_right = 398.0
-margin_bottom = 387.0
+[node name="LoadingLabel2" type="Label" parent="."]
+margin_left = 197.422
+margin_top = 392.347
+margin_right = 247.422
+margin_bottom = 407.347
 custom_fonts/font = ExtResource( 6 )
-text = "Version 0.02 
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 1
+text = "Loading..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitlePart2" type="Label" parent="."]
+margin_left = 129.807
+margin_top = 202.466
+margin_right = 577.807
+margin_bottom = 402.466
+rect_min_size = Vector2( 0, 200 )
+custom_fonts/font = SubResource( 1 )
+text = "Woods"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 62.9791
+margin_top = 120.972
+margin_right = 510.979
+margin_bottom = 447.972
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitlePart1" type="Label" parent="VBoxContainer"]
+margin_right = 447.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+custom_fonts/font = SubResource( 1 )
+text = "The Hunted"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer"]
+margin_top = 204.0
+margin_right = 200.0
+margin_bottom = 254.0
+rect_min_size = Vector2( 200, 50 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+custom_styles/focus = SubResource( 2 )
+shortcut_in_tooltip = false
+flat = true
+
+[node name="Label" type="Label" parent="VBoxContainer/NewGameButton"]
+margin_right = 181.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 200, 50 )
+custom_fonts/font = SubResource( 3 )
+text = "Start Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+margin_top = 258.0
+margin_right = 447.0
+margin_bottom = 303.0
+rect_min_size = Vector2( 0, 45 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/focus = SubResource( 4 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/CreditsButton"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 5 )
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VersionLabel" type="Label" parent="VBoxContainer"]
+margin_top = 307.0
+margin_right = 447.0
+margin_bottom = 376.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 1
+text = "Version 0.0.4
 Made for Weekly Game Jam 
 Week 147
 Theme: Invisible"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Tree" type="Sprite" parent="."]
-position = Vector2( 480, 216 )
-scale = Vector2( 2, 2 )
-
-[node name="body" type="Sprite" parent="Tree"]
-position = Vector2( -48, 8 )
-texture = ExtResource( 7 )
-region_enabled = true
-region_rect = Rect2( 8, 288, 64, 160 )
-
-[node name="end" type="Sprite" parent="Tree"]
-position = Vector2( 32, 0 )
-texture = ExtResource( 7 )
-region_enabled = true
-region_rect = Rect2( 96, 288, 32, 152 )
-
-[node name="mid" type="Sprite" parent="Tree"]
-texture = ExtResource( 7 )
-region_enabled = true
-region_rect = Rect2( 128, 288, 32, 152 )
-
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
+[connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]

@@ -112,8 +112,11 @@ func _physics_process(_delta):
 	
 	match _state:
 		STATES.WALK, STATES.RUN:
-			if _dir != inputs.dir and _state == STATES.RUN:
-				rotate_arc_light(inputs.dir)
+			if _state == STATES.RUN:
+				$StaminaUI.change_stamina($StaminaUI.stamina_usage_speed)
+				if _dir != inputs.dir:
+					rotate_arc_light(inputs.dir)
+					
 			match _dir:
 				DIR.DOWN:
 					animation_player.play("walk_down")
@@ -147,7 +150,7 @@ func get_event(input):
 	if input.is_shooting:
 		return EVENTS.SHOOT
 	elif input.dir != Vector2.ZERO:
-		if input.is_running:
+		if input.is_running and $StaminaUI/StaminaTimer.is_stopped():
 			return EVENTS.RUN
 		else:
 			return EVENTS.WALK

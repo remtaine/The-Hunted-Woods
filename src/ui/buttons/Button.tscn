@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="Button" type="Button"]
+margin_right = 352.0
+margin_bottom = 272.0
+mouse_filter = 1
+text = "HI"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -4,7 +4,7 @@ var hp = 3
 
 var hearts = [0,0,0]
 
-var death_destination = "res://src/menus/DeathMenu.tscn"
+var death_destination = "res://src/ui/menus/DeathMenu.tscn"
 
 func _ready():
 	hearts[0] = $heart1
@@ -24,7 +24,10 @@ func update_hp_ui():
 	if hp >= 0:
 		hearts[hp].visible = false
 	if hp <= 0:
+		$DeadAudio.play()
 		die()
+	else:
+		$HurtAudio.play()
 
 func die():
 	SceneChanger.change_scene(death_destination)

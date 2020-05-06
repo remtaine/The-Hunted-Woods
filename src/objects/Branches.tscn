@@ -7,6 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 2
 
 [node name="Branches" type="Node2D"]
 script = ExtResource( 2 )

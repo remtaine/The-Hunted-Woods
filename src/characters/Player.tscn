@@ -1,15 +1,18 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://art/characters/PSF_HeroesA_Casual.png" type="Texture" id=1]
 [ext_resource path="res://src/characters/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/objects/Flashlight.tscn" type="PackedScene" id=3]
-[ext_resource path="res://art/light/white circle light.png" type="Texture" id=4]
+[ext_resource path="res://art/light/circle of light.png" type="Texture" id=4]
 [ext_resource path="res://art/placeholders/white.png" type="Texture" id=5]
 [ext_resource path="res://src/SoundHandlers/Heartbeat.tscn" type="PackedScene" id=6]
-[ext_resource path="res://art/light/Flashlight right v2.png" type="Texture" id=7]
+[ext_resource path="res://art/light/Flashlight centered right.png" type="Texture" id=7]
 [ext_resource path="res://src/helpers/Footsteps.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/helpers/Camera2D.gd" type="Script" id=9]
-[ext_resource path="res://src/ui/Health.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/ui/HealthUI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/ui/StaminaUI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sounds/player/damaged/Player death scream v1.wav" type="AudioStream" id=12]
+[ext_resource path="res://sounds/player/damaged/Player hurt scream v1-001.wav" type="AudioStream" id=13]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
@@ -813,14 +816,14 @@ position = Vector2( -12, -6.025 )
 rotation = 1.5708
 
 [node name="SelfLight" type="Light2D" parent="."]
-position = Vector2( -0.815624, -24.5543 )
+position = Vector2( -1, -25 )
 texture = ExtResource( 4 )
-texture_scale = 0.12
+texture_scale = 0.35
 mode = 2
 range_item_cull_mask = 3
 
 [node name="ArcLightPosition" type="Position2D" parent="."]
-position = Vector2( -0.735092, -20.5826 )
+position = Vector2( -1, -25 )
 
 [node name="ArcLight" type="Light2D" parent="ArcLightPosition"]
 scale = Vector2( 1, 1.5 )
@@ -852,4 +855,12 @@ scale = Vector2( 0.28, 0.28 )
 [node name="Heartbeat" parent="Sounds" instance=ExtResource( 6 )]
 
 [node name="Health" parent="." instance=ExtResource( 10 )]
+
+[node name="HurtAudio" type="AudioStreamPlayer" parent="Health"]
+stream = ExtResource( 13 )
+
+[node name="DeadAudio" type="AudioStreamPlayer" parent="Health"]
+stream = ExtResource( 12 )
+
+[node name="StaminaUI" parent="." instance=ExtResource( 11 )]
 [connection signal="input_event" from="." to="." method="_on_Player_input_event"]

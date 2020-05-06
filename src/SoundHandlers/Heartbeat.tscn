@@ -25,6 +25,6 @@ stream = ExtResource( 5 )
 stream = ExtResource( 3 )
 
 [node name="CooldownTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 one_shot = true
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]

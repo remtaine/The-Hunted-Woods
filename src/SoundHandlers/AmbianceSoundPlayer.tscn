@@ -2,8 +2,6 @@
 
 [ext_resource path="res://sounds/environment/ambiance.ogg" type="AudioStream" id=1]
 
-
 [node name="AmbianceSoundPlayer" type="AudioStreamPlayer"]
 stream = ExtResource( 1 )
-volume_db = -30.0
 autoplay = true

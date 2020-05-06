@@ -10,6 +10,7 @@ enum HEART_LEVELS {
 }
 
 var heart_level = 0
+var minimum_heart_level = HEART_LEVELS.NONE
 onready var slow_heartbeat = $SlowHRAudioStreamPlayer2D
 onready var medium_heartbeat = $MediumHRAudioStreamPlayer2D
 onready var fast_heartbeat = $FastHRAudioStreamPlayer2D
@@ -57,7 +58,10 @@ func got_scared():
 	increase_heart_rate()
 
 func decrease_heart_rate():
-	if heart_level <= HEART_LEVELS.NONE:
+	if Global.is_enemy_spawned:
+		if heart_level <= HEART_LEVELS.SLOW:
+			return
+	elif heart_level <= HEART_LEVELS.NONE:
 		return
 	stop_heart_sound()
 	heart_level -= 1

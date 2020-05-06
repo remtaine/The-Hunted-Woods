@@ -9,12 +9,12 @@ onready var aggression_timer = $AggressionTimer
 var scream_audios = []
 var growl_audios = []
  
-var current_aggression = 0
-var tolerance = 0
-var has_spawned_enemy = false
+var tolerance = 4
 var player
+var enemy
 
 func _ready():
+	Global.is_enemy_spawned = false
 	scream_audios.append($Screams/ScreamAudio1)
 	scream_audios.append($Screams/ScreamAudio2)
 	scream_audios.append($Screams/ScreamAudio3)
@@ -31,16 +31,23 @@ func setup(p):
 	print("P is", p)
 
 func _physics_process(delta):
-	if current_aggression >= tolerance and not has_spawned_enemy:
-		print("OOH IM ANGRY NOW")
+	if get_aggression() >= tolerance and not Global.is_enemy_spawned:
 		spawn_enemy()
-		has_spawned_enemy = true
+		Global.is_enemy_spawned = true
 		
+func increase_aggression():
+	Global.enemy_aggression += 1
+	
+func get_aggression():
+	return Global.enemy_aggression
+	
 func noise_made():
-	current_aggression += 1
+	increase_aggression()
+	if Global.is_enemy_spawned:
+		enemy.boost()
 
 func _on_AggressionTimer_timeout():
-	if not has_spawned_enemy:
+	if true:
 		randomize()
 		var r = randi() % 100
 		if r < 25:
@@ -56,21 +63,18 @@ func _on_AggressionTimer_timeout():
 		emit_signal("scared_by_noise")
 	
 func spawn_enemy():
-	print("ENEMY SPAWNED")
-	var enemy = enemy_resource.instance()
+	enemy = enemy_resource.instance()
 	enemy.global_position = player.get_global_position() - ENEMY_LEEWAY
 	enemy.setup(player)
 	add_child(enemy)
 	emit_signal("enemy_spawned", enemy.global_position)
 
 func _on_Branches_stepped_on():
+	print("branches stepped on")
 	$SteppedOnTimer.start()
-	print("stepped on something!")
 
 func _on_SteppedOnTimer_timeout():
-#	pass # Replace with function body.
-	print("Ive reached the timeout!")
-	if true:#not has_spawned_enemy:
+	if true:#Global.is_enemy_spawned:
 		randomize()
 		var r = randi() % 100
 		print("played with r of ", r)

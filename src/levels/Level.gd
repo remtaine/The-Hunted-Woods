@@ -6,11 +6,14 @@ onready var player = $Player
 #change pos of player
 
 signal noise_made
+signal level_started
 
 func _ready():
 #	Input.#set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	pass
-	
+	Input.set_custom_mouse_cursor(Global.cursor)
+	MenuMusic.on_level_started()
+	print("STARTED LEVEL")
+
 func _on_getting_noise():
 	emit_signal("noise_made")
 

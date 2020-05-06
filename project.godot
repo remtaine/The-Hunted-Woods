@@ -20,14 +20,16 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Slasher Forest"
-run/main_scene="res://src/levels/Level3.tscn"
-config/icon="res://Icon2.png"
+config/name="Hunted Woods"
+config/description="Your friend is missing, and a trail of her blood leads towards the dark woods. Can you save her without suffering the same fate?"
+run/main_scene="res://src/ui/menus/MainMenu.tscn"
+config/icon="res://icon.png"
 
 [autoload]
 
 SceneChanger="*res://src/helpers/SceneChanger.tscn"
 Global="*res://src/helpers/Global.gd"
+MenuMusic="*res://sounds/MenuMusic.tscn"
 
 [display]
 

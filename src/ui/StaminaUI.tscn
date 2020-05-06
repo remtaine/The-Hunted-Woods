@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/placeholders/white.png" type="Texture" id=1]
+[ext_resource path="res://src/ui/StaminaUI.gd" type="Script" id=2]
+
+[node name="StaminaUI" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="StaminaBar" type="TextureProgress" parent="."]
+margin_left = 8.68298
+margin_top = 51.0074
+margin_right = 40.683
+margin_bottom = 83.0074
+rect_scale = Vector2( 4, 1 )
+value = 100.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 1 )
+tint_under = Color( 0, 0, 0, 0.341176 )
+tint_progress = Color( 0.705882, 0.356863, 0.0196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaminaTimer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+[connection signal="timeout" from="StaminaTimer" to="." method="_on_StaminaTimer_timeout"]
