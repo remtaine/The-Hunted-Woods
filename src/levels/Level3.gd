@@ -4,7 +4,7 @@ onready var director = $Helpers/EnemyDirector
 onready var canvas = $Helpers/ForestCanvasModulate
 onready var heartbeat = $Player/Sounds/Heartbeat
 #onready va
-#TODO fix problem of moving player to ysort
+
 func _ready():
 	connect("noise_made", $Helpers/EnemyDirector, "_on_noise_made")
 	director.setup(player)

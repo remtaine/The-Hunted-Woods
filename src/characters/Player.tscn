@@ -818,7 +818,7 @@ rotation = 1.5708
 [node name="SelfLight" type="Light2D" parent="."]
 position = Vector2( -1, -25 )
 texture = ExtResource( 4 )
-texture_scale = 0.35
+texture_scale = 0.4
 mode = 2
 range_item_cull_mask = 3
 
@@ -826,7 +826,7 @@ range_item_cull_mask = 3
 position = Vector2( -1, -25 )
 
 [node name="ArcLight" type="Light2D" parent="ArcLightPosition"]
-scale = Vector2( 1, 1.5 )
+scale = Vector2( 1.25, 2 )
 texture = ExtResource( 7 )
 texture_scale = 0.5
 mode = 2

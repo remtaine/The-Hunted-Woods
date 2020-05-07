@@ -4,11 +4,9 @@ enum STATES {
 	IDLE,
 	WALK,
 	RUN,
-	BUMP,
+	RESTING,
 	HURT,
-	DEAD,
-	SHOOTING,
-	FROZEN
+	DEAD
 }
 
 enum EVENTS {
@@ -16,9 +14,8 @@ enum EVENTS {
 	STOP,
 	WALK,
 	RUN,
-	BUMP,
+	REST,
 	HURT,
-	SHOOT,
 	DIE
 }
 
@@ -62,14 +59,11 @@ var DIR_LIMITS = {
 	DIR.UPPER_RIGHT: [-45, 45],	
 	DIR.LOWER_LEFT: [135, 225],
 	DIR.LOWER_RIGHT: [-45, 45],	
-#	DIR.UPPER_LEFT: [-180, -90],
-#	DIR.UPPER_RIGHT: [-90, 0],	
-#	DIR.LOWER_LEFT: [90, 180],
-#	DIR.LOWER_RIGHT: [0, 90]
 }
 
 var last_pressed = "none"
 
+onready var color = $Sprite.get_self_modulate()
 onready var flashlight = $Flashlight
 var _speed
 var _anim_speed
@@ -95,49 +89,68 @@ func _init():
 		[STATES.WALK, EVENTS.RUN]: STATES.RUN,
 		[STATES.RUN, EVENTS.STOP]: STATES.IDLE,
 		[STATES.RUN, EVENTS.WALK]: STATES.WALK,
-		[STATES.IDLE, EVENTS.SHOOT]: STATES.SHOOTING,
-		[STATES.WALK, EVENTS.SHOOT]: STATES.SHOOTING,
-		[STATES.RUN, EVENTS.SHOOT]: STATES.SHOOTING,
+		[STATES.IDLE, EVENTS.DIE]: STATES.DEAD,
+		[STATES.WALK, EVENTS.DIE]: STATES.DEAD,
+		[STATES.RUN, EVENTS.DIE]: STATES.DEAD,
+		[STATES.IDLE, EVENTS.REST]: STATES.RESTING,
+		[STATES.WALK, EVENTS.REST]: STATES.RESTING,
+		[STATES.RUN, EVENTS.REST]: STATES.RESTING,
+		[STATES.RESTING, EVENTS.STOP]: STATES.IDLE,
+
 	}
-	
+
+func rest(val = true):
+	if val:
+		change_state(EVENTS.REST)
+		$Sprite.set_self_modulate(Color(color.r + 3,color.g,color.b,color.a))
+	else:
+		change_state(EVENTS.STOP)
+		$Sprite.set_self_modulate(color)
 func _ready():
 #	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	animation_player.play("idle")
+	animation_player.play("idle_down")
 #	note:try to change pos of player so origin at middle
 	
 func _physics_process(_delta):
-	inputs = get_raw_input()
-	var event = get_event(inputs)
-	change_state(event)
+	print("CURRENTLY ANIMATING ", $AnimationPlayer.current_animation)
+	if _state != STATES.DEAD and _state != STATES.RESTING:
+		inputs = get_raw_input()
+		var event = get_event(inputs)
+		change_state(event)
+		
+		match _state:
+			STATES.WALK, STATES.RUN:
+				if _state == STATES.RUN:
+					$StaminaUI.change_stamina($StaminaUI.stamina_usage_speed)
+					if _dir != inputs.dir:
+						rotate_arc_light(inputs.dir)
+						
+				match _dir:
+					DIR.DOWN:
+						animation_player.play("walk_down")
+					DIR.LEFT, DIR.UPPER_LEFT, DIR.LOWER_LEFT:
+						animation_player.play("walk_left")
+					DIR.RIGHT, DIR.UPPER_RIGHT, DIR.LOWER_RIGHT:
+						animation_player.play("walk_right")
+					DIR.UP:
+						animation_player.play("walk_up")
 	
-	match _state:
-		STATES.WALK, STATES.RUN:
-			if _state == STATES.RUN:
-				$StaminaUI.change_stamina($StaminaUI.stamina_usage_speed)
-				if _dir != inputs.dir:
-					rotate_arc_light(inputs.dir)
-					
-			match _dir:
-				DIR.DOWN:
-					animation_player.play("walk_down")
-				DIR.LEFT, DIR.UPPER_LEFT, DIR.LOWER_LEFT:
-					animation_player.play("walk_left")
-				DIR.RIGHT, DIR.UPPER_RIGHT, DIR.LOWER_RIGHT:
-					animation_player.play("walk_right")
-				DIR.UP:
-					animation_player.play("walk_up")
-
-			self._dir = inputs.dir
-			_velocity = _dir * _speed
-			_velocity = move_and_slide(_velocity, DIR.UP)
-			continue
-		STATES.RUN:
-			rotate_arc_light(inputs.dir)
+				self._dir = inputs.dir
+				_velocity = _dir * _speed
+				_velocity = move_and_slide(_velocity, DIR.UP)
+				continue
+			STATES.RUN:
+				rotate_arc_light(inputs.dir)
+	else:
+		animation_player.play("idle_down")
 
 func update_hp(val = -1):
 	hp += val
 	$Health.update_hp_ui()
 	emit_signal("hp_updated")
+
+func die():
+	change_state(EVENTS.DIE)
 
 func get_raw_input():
 	return {
@@ -171,16 +184,18 @@ func get_normalized_angle(angle):
 		 
 func enter_state():
 	match _state:
+		STATES.DEAD, STATES.RESTING:
+			print("after changing state, animation is now ", animation_player.current_animation)
 		STATES.RUN:
 			Input.set_custom_mouse_cursor(Global.cursor_crossed)
 			_speed = SPEEDS[_state]
 			_anim_speed = ANIM_SPEEDS[_state]
+			$Sounds/Footsteps.change_volume(0)
 		STATES.WALK:
 			Input.set_custom_mouse_cursor(Global.cursor)
 			_speed = SPEEDS[_state]
 			_anim_speed = ANIM_SPEEDS[_state]
-#			_dir = inputs.dir
-#			rotate_arc_light(_dir)
+			$Sounds/Footsteps.change_volume(-10)
 		STATES.IDLE:
 			Input.set_custom_mouse_cursor(Global.cursor)
 			_speed = SPEEDS[_state]
@@ -218,21 +233,6 @@ func get_input_direction():
 	var y = float(Input.is_action_pressed("move_down")) - float(Input.is_action_pressed("move_up"))
 	return Vector2(x,y)
 	
-#	if Input.is_action_pressed("move_up") and (last_pressed == "move_up" or not Input.is_action_pressed(last_pressed)):
-#		last_pressed = "move_up"
-#		return DIR.UP
-#	elif Input.is_action_pressed("move_down") and (last_pressed == "move_down" or not Input.is_action_pressed(last_pressed)):
-#		last_pressed = "move_down"
-#		return DIR.DOWN
-#	elif Input.is_action_pressed("move_left") and (last_pressed == "move_left" or not Input.is_action_pressed(last_pressed)):
-#		last_pressed = "move_left"
-#		return DIR.LEFT
-#	elif Input.is_action_pressed("move_right") and (last_pressed == "move_right" or not Input.is_action_pressed(last_pressed)):
-#		last_pressed = "move_right"
-#		return DIR.RIGHT
-#	else:
-#		return DIR.NONE	
-	
 func setup_camera_pos(dir):
 	match dir:
 		DIR.DOWN:
@@ -247,9 +247,6 @@ func setup_camera_pos(dir):
 		DIR.RIGHT:
 			flashlight.rotation_degrees = 0
 			pass
-
-func freeze():
-	change_state(STATES.FROZEN)
 
 func rotate_arc_light(new_dir):
 	if new_dir == Vector2.ZERO:

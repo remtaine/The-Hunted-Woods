@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/helpers/EnemyDirector.gd" type="Script" id=1]
 [ext_resource path="res://sounds/screams/woman screaming v1-004.wav" type="AudioStream" id=2]
 [ext_resource path="res://sounds/screams/woman screaming v1-003.wav" type="AudioStream" id=3]
 [ext_resource path="res://sounds/screams/woman screaming v1-001.wav" type="AudioStream" id=4]
-[ext_resource path="res://sounds/screams/woman screaming v1-002.wav" type="AudioStream" id=5]
 [ext_resource path="res://art/placeholders/white.png" type="Texture" id=6]
 [ext_resource path="res://sounds/enemy/Monster Breath v1-003.wav" type="AudioStream" id=7]
 [ext_resource path="res://art/placeholders/blue.png" type="Texture" id=8]
@@ -30,8 +29,8 @@ visible = false
 texture = ExtResource( 6 )
 
 [node name="ScreamAudio2" type="AudioStreamPlayer2D" parent="Screams"]
-position = Vector2( 487.63, 140.286 )
-stream = ExtResource( 5 )
+position = Vector2( 492.041, 475.571 )
+stream = ExtResource( 2 )
 attenuation = 0.25
 
 [node name="Sprite" type="Sprite" parent="Screams/ScreamAudio2"]
@@ -47,19 +46,10 @@ attenuation = 0.25
 visible = false
 texture = ExtResource( 6 )
 
-[node name="ScreamAudio4" type="AudioStreamPlayer2D" parent="Screams"]
-position = Vector2( 492.041, 475.571 )
-stream = ExtResource( 2 )
-attenuation = 0.25
-
-[node name="Sprite" type="Sprite" parent="Screams/ScreamAudio4"]
-visible = false
-texture = ExtResource( 6 )
-
 [node name="Growls" type="CanvasLayer" parent="."]
 
 [node name="GrowlAudio1" type="AudioStreamPlayer2D" parent="Growls"]
-position = Vector2( 936.035, 620.513 )
+position = Vector2( 832.791, 517.269 )
 stream = ExtResource( 7 )
 attenuation = 0.25
 
@@ -68,7 +58,7 @@ visible = false
 texture = ExtResource( 8 )
 
 [node name="GrowlAudio2" type="AudioStreamPlayer2D" parent="Growls"]
-position = Vector2( 929.139, 316.405 )
+position = Vector2( 823.947, 78.7481 )
 stream = ExtResource( 7 )
 attenuation = 0.25
 
@@ -77,7 +67,7 @@ visible = false
 texture = ExtResource( 8 )
 
 [node name="GrowlAudio3" type="AudioStreamPlayer2D" parent="Growls"]
-position = Vector2( 24.5526, 321.839 )
+position = Vector2( 141.433, 80.2861 )
 stream = ExtResource( 9 )
 attenuation = 0.25
 

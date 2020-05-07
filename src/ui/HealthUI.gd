@@ -3,7 +3,7 @@ extends CanvasLayer
 var hp = 3
 
 var hearts = [0,0,0]
-
+onready var player = get_parent()
 var death_destination = "res://src/ui/menus/DeathMenu.tscn"
 
 func _ready():
@@ -25,9 +25,7 @@ func update_hp_ui():
 		hearts[hp].visible = false
 	if hp <= 0:
 		$DeadAudio.play()
-		die()
+		player.die()
+		SceneChanger.change_scene(death_destination)
 	else:
 		$HurtAudio.play()
-
-func die():
-	SceneChanger.change_scene(death_destination)

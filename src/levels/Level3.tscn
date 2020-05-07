@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://src/characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/placeholders/PlaceholderMaze.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://art/placeholders/mazes/maze v5.png" type="Texture" id=9]
 [ext_resource path="res://art/object tilesets/32x32 Horror Blood.png" type="Texture" id=10]
 [ext_resource path="res://src/objects/Branches.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/objects/Portal.tscn" type="PackedScene" id=12]
 [ext_resource path="res://art/object tilesets/32x32 Horror Water.png" type="Texture" id=13]
 [ext_resource path="res://src/helpers/Infinilight.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/helpers/EnemyDirector.tscn" type="PackedScene" id=15]
@@ -613,6 +614,7 @@ material = SubResource( 14 )
 position = Vector2( 0, -1 )
 tile_set = ExtResource( 8 )
 cell_size = Vector2( 16, 16 )
+cell_tile_origin = 1
 cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( 5767313, 9, 0, 5898383, 6, 0, 5898387, 6, 0, 6094990, 6, 0, 6094993, 7, 0, 6422606, 2, 0, 6422671, 6, 0, 6422675, 6, 0, 6619281, 7, 0, 6684735, 11, 0, 6684738, 3, 0, 6684814, 6, 0, 6750280, 12, 0, 6750284, 12, 0, 6815804, 11, 0, 6815818, 12, 0, 6946894, 1, 0, 6946959, 6, 0, 6946963, 6, 0, 7143569, 7, 0, 7209025, 1, 0, 7209053, 11, 0, 7209102, 6, 0, 7274573, 1, 0, 7274598, 11, 0, 7340120, 11, 0, 7340139, 11, 0, 7340140, 11, 0, 7405664, 3, 0, 7471197, 11, 0, 7471247, 6, 0, 7471251, 6, 0, 7536728, 3, 0, 7536743, 2, 0, 7667823, 1, 0, 7864414, 11, 0, 7864418, 6, 0, 7864420, 11, 0, 7864429, 1, 0, 7929947, 9, 0, 7995500, 9, 0, 8257580, 6, 0, 8323119, 1, 0, 8454185, 6, 0, 8454189, 6, 0, 8519730, 11, 0, 8650795, 7, 0, 8650799, 6, 0, 8650845, 11, 0, 8650850, 3, 0, 8716377, 8, 0, 8781873, 8, 0, 8978473, 6, 0, 8978477, 6, 0, 8978527, 11, 0, 9044010, 11, 0, 9044014, 8, 0, 9044020, 12, 0, 9044071, 9, 0, 9109596, 9, 0, 9371698, 6, 0 )
@@ -669,7 +671,6 @@ scale = Vector2( 8, 8 )
 texture = ExtResource( 9 )
 
 [node name="Infinilight" parent="." instance=ExtResource( 14 )]
-visible = false
 position = Vector2( 1011.73, 1256.99 )
 
 [node name="Objects" type="Node2D" parent="."]
@@ -745,11 +746,17 @@ position = Vector2( 178.854, 1958.96 )
 position = Vector2( 205.724, 278.501 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1204.22, 2327.73 )
+position = Vector2( 1198.88, 2352.38 )
 z_index = 1
 
 [node name="SoundHandlers" type="Node2D" parent="."]
 
 [node name="Ambiance" parent="SoundHandlers" instance=ExtResource( 5 )]
 volume_db = -20.0
+
+[node name="Portal" parent="." instance=ExtResource( 12 )]
+visible = false
+position = Vector2( 205.719, 278.368 )
+scale = Vector2( 6, 6 )
+destination = "res://src/ui/menus/WinMenu.tscn"
 [connection signal="hp_updated" from="Player" to="." method="_on_Player_hp_updated"]

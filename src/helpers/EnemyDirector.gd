@@ -18,7 +18,6 @@ func _ready():
 	scream_audios.append($Screams/ScreamAudio1)
 	scream_audios.append($Screams/ScreamAudio2)
 	scream_audios.append($Screams/ScreamAudio3)
-	scream_audios.append($Screams/ScreamAudio4)
 
 	growl_audios.append($Growls/GrowlAudio1)
 	growl_audios.append($Growls/GrowlAudio2)
@@ -41,25 +40,24 @@ func increase_aggression():
 func get_aggression():
 	return Global.enemy_aggression
 	
-func noise_made():
+func noise_made(will_boost = true):
 	increase_aggression()
-	if Global.is_enemy_spawned:
+	if Global.is_enemy_spawned and will_boost:
 		enemy.boost()
 
 func _on_AggressionTimer_timeout():
 	if true:
 		randomize()
 		var r = randi() % 100
-		if r < 25:
+		if r < 35:
 			scream_audios[0].play()
-		elif r < 50:
+		elif r < 70:
 			scream_audios[1].play()
-		elif r < 75:
-			scream_audios[2].play()
 		else:
-			scream_audios[3].play()
+			scream_audios[2].play()
+		
 		aggression_timer.start()
-		noise_made()	
+		noise_made(false)
 		emit_signal("scared_by_noise")
 	
 func spawn_enemy():

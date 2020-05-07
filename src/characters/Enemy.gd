@@ -8,9 +8,10 @@ var _speed = 50
 const BOOST_MULTIPLIER = 2
 
 var attack_dist = 30
-var sprint_dist = 150
-var run_dist = 350
-var walk_dist = 450
+var killer_dist = 150
+var sprint_dist = 300
+var run_dist = 500
+var walk_dist = 650
 
 onready var chase_audio = [$ChaseAudioHandler/ChaseAudio1, $ChaseAudioHandler/ChaseAudio2, $ChaseAudioHandler/ChaseAudio3, $ChaseAudioHandler/ChaseAudio4]
 var is_chase_song_playing = [true, false, false,false]
@@ -18,8 +19,8 @@ onready var attackCDTimer = $AttackCDTimer
 
 func _ready():
 #	set_physics_process(false)
-	chase_audio[2].set_volume_db(-100)
-	chase_audio[1].set_volume_db(-100)
+	for i in range (1,4):
+		chase_audio[i].set_volume_db(-100)
 	
 func _physics_process(delta):
 	if (player_wr.get_ref()):
@@ -45,21 +46,29 @@ func _physics_process(delta):
 				$AttackAudio.play()
 				Global.enemy_aggression /= 2
 				attackCDTimer.start()
-				
+			elif dist < killer_dist:
+				chase_audio[3].set_volume_db(0)
+				chase_audio[2].set_volume_db(0)
+				chase_audio[1].set_volume_db(0)
+				is_chase_song_playing[1] = true
+				chase(p_pos, 1.7)
 			elif dist < sprint_dist:
+				chase_audio[3].set_volume_db(-100)
 				chase_audio[2].set_volume_db(0)
 				chase_audio[1].set_volume_db(0)
 				is_chase_song_playing[1] = true
 				chase(p_pos, 1.7)
 			elif dist < run_dist:
+				chase_audio[3].set_volume_db(-100)
 				chase_audio[2].set_volume_db(-100)
 				chase_audio[1].set_volume_db(0)
 				chase(p_pos, 1.4)
 			elif dist < walk_dist:
-				chase(p_pos, 1.2)
-			else:
+				chase_audio[3].set_volume_db(-100)
 				chase_audio[2].set_volume_db(-100)
 				chase_audio[1].set_volume_db(-100)
+				chase(p_pos, 1.2)
+			else:
 				chase(p_pos)
 		else:
 			$AnimatedSprite.play("idle")

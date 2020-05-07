@@ -22,6 +22,6 @@ __meta__ = {
 }
 
 [node name="StaminaTimer" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 5.0
 one_shot = true
 [connection signal="timeout" from="StaminaTimer" to="." method="_on_StaminaTimer_timeout"]
