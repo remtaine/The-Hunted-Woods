@@ -9,7 +9,7 @@ onready var aggression_timer = $AggressionTimer
 var scream_audios = []
 var growl_audios = []
  
-var tolerance = 4
+var tolerance = 0
 var player
 var enemy = 0
 

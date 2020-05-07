@@ -1,19 +1,33 @@
-[gd_resource type="TileSet" load_steps=3 format=2]
+[gd_resource type="TileSet" load_steps=11 format=2]
 
 [ext_resource path="res://art/object tilesets/32x32 Horror Green Forest.png" type="Texture" id=1]
 [ext_resource path="res://art/object tilesets/32x32 Horror Forest EDITED.png" type="Texture" id=2]
 
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
 [resource]
-0/name = "32x32 Horror Green Forest"
-0/texture = ExtResource( 1 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 512, 512 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 256, 256 )
-0/navigation_offset = Vector2( 256, 256 )
-0/shapes = [  ]
-0/z_index = 0
 1/name = "32x32 Horror Forest EDITED"
 1/texture = ExtResource( 2 )
 1/tex_offset = Vector2( 0, 0 )
@@ -22,7 +36,13 @@
 1/tile_mode = 0
 1/occluder_offset = Vector2( 256, 256 )
 1/navigation_offset = Vector2( 256, 256 )
-1/shapes = [  ]
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 1/z_index = 0
 2/name = "32x32 Horror Green Forest.png 2"
 2/texture = ExtResource( 1 )
@@ -72,18 +92,14 @@
 6/tile_mode = 0
 6/occluder_offset = Vector2( 0, 0 )
 6/navigation_offset = Vector2( 0, 0 )
-6/shapes = [  ]
+6/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 6/z_index = 0
-7/name = "32x32 Horror Green Forest.png 7"
-7/texture = ExtResource( 1 )
-7/tex_offset = Vector2( 0, 0 )
-7/modulate = Color( 1, 1, 1, 1 )
-7/region = Rect2( 160, 320, 64, 64 )
-7/tile_mode = 0
-7/occluder_offset = Vector2( 0, 0 )
-7/navigation_offset = Vector2( 0, 0 )
-7/shapes = [  ]
-7/z_index = 0
 8/name = "32x32 Horror Green Forest.png 8"
 8/texture = ExtResource( 1 )
 8/tex_offset = Vector2( 0, 0 )
@@ -192,7 +208,13 @@
 18/tile_mode = 0
 18/occluder_offset = Vector2( 0, 0 )
 18/navigation_offset = Vector2( 0, 0 )
-18/shapes = [  ]
+18/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 18/z_index = 0
 19/name = "32x32 Horror Forest EDITED.png 19"
 19/texture = ExtResource( 2 )
@@ -202,7 +224,13 @@
 19/tile_mode = 0
 19/occluder_offset = Vector2( 0, 0 )
 19/navigation_offset = Vector2( 0, 0 )
-19/shapes = [  ]
+19/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 19/z_index = 0
 20/name = "32x32 Horror Forest EDITED.png 20"
 20/texture = ExtResource( 2 )
@@ -222,18 +250,14 @@
 21/tile_mode = 0
 21/occluder_offset = Vector2( 0, 0 )
 21/navigation_offset = Vector2( 0, 0 )
-21/shapes = [  ]
+21/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 21/z_index = 0
-22/name = "32x32 Horror Forest EDITED.png 22"
-22/texture = ExtResource( 2 )
-22/tex_offset = Vector2( 0, 0 )
-22/modulate = Color( 1, 1, 1, 1 )
-22/region = Rect2( 192, 128, 64, 64 )
-22/tile_mode = 0
-22/occluder_offset = Vector2( 0, 0 )
-22/navigation_offset = Vector2( 0, 0 )
-22/shapes = [  ]
-22/z_index = 0
 23/name = "32x32 Horror Forest EDITED.png 23"
 23/texture = ExtResource( 2 )
 23/tex_offset = Vector2( 0, 0 )
@@ -242,5 +266,43 @@
 23/tile_mode = 0
 23/occluder_offset = Vector2( 0, 0 )
 23/navigation_offset = Vector2( 0, 0 )
-23/shapes = [  ]
+23/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 23/z_index = 0
+25/name = "32x32 Horror Forest EDITED.png 25"
+25/texture = ExtResource( 2 )
+25/tex_offset = Vector2( 0, 0 )
+25/modulate = Color( 1, 1, 1, 1 )
+25/region = Rect2( 192, 128, 64, 64 )
+25/tile_mode = 0
+25/occluder_offset = Vector2( 0, 0 )
+25/navigation_offset = Vector2( 0, 0 )
+25/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+25/z_index = 0
+26/name = "32x32 Horror Green Forest.png 26"
+26/texture = ExtResource( 1 )
+26/tex_offset = Vector2( 0, 0 )
+26/modulate = Color( 1, 1, 1, 1 )
+26/region = Rect2( 160, 320, 64, 64 )
+26/tile_mode = 0
+26/occluder_offset = Vector2( 0, 0 )
+26/navigation_offset = Vector2( 0, 0 )
+26/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+26/z_index = 0

@@ -5,7 +5,7 @@ var player_wr
 var _velocity
 var _dir
 var _speed = 50
-const BOOST_MULTIPLIER = 2
+const BOOST_MULTIPLIER = 1.5
 
 var attack_dist = 30
 var killer_dist = 200
@@ -43,7 +43,7 @@ func _physics_process(delta):
 				
 			if dist < attack_dist:
 				attack()
-				#TODO add HR increaser
+				player.increase_heart_rate()
 				$AttackAudio.play()
 				Global.enemy_aggression /= 2
 				attackCDTimer.start()

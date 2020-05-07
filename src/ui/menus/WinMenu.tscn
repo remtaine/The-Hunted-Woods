@@ -5,7 +5,7 @@
 [ext_resource path="res://art/UI/Full Moon - background.png" type="Texture" id=3]
 [ext_resource path="res://art/characters/32x32 Heroes Down.png" type="Texture" id=4]
 [ext_resource path="res://src/ui/buttons/MainMenuButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://sounds/menu/Victory.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sounds/menu/Victory v2.ogg" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 56
@@ -100,8 +100,8 @@ margin_top = 214.303
 margin_right = 743.794
 margin_bottom = 313.303
 custom_fonts/font = SubResource( 6 )
-text = "After rescuing your friend, both of you manage to escape.
-You hope this is the last you see of these woods..."
+text = "After rescuing your friend, both of you narrowly manage to escape.
+You hope that this is the last time you'll see these woods..."
 align = 1
 autowrap = true
 __meta__ = {

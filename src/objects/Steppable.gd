@@ -17,7 +17,7 @@ func setup(level):
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("player"):
-		body.pause_movement()
+		#body.pause_movement("branch")
 		#TODO trigger dialogue
 		audio.play()	
 		emit_signal("stepped_on")

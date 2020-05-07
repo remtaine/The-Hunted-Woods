@@ -162,7 +162,7 @@ func update_hp(val = -1):
 func die():
 	change_state(EVENTS.DIE)
 
-func pause_movement():
+func pause_movement(reason):
 	change_state(EVENTS.FREEZE)
 	$PauseMovementTimer.start()
 	
@@ -272,6 +272,9 @@ func rotate_arc_light(new_dir = Vector2.ZERO):
 		return $ArcLightPosition.rotation_degrees
 
 	$ArcLightPosition.rotation_degrees = (DIR_LIMITS[new_dir][0] + DIR_LIMITS[new_dir][1])/2 
+
+func increase_heart_rate():
+	$Sounds/Heartbeat.increase_heart_rate()
 
 func _input(event):
 	if event is InputEventMouseMotion:
