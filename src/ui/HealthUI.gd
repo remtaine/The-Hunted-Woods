@@ -16,16 +16,18 @@ func _ready():
 		"Level1":
 			for heart in hearts:
 				heart.visible = false
+#			pass
 		"Level3":
 			pass
 	
 func update_hp_ui():
-	hp -= 1
-	if hp >= 0:
-		hearts[hp].visible = false
-	if hp <= 0:
-		$DeadAudio.play()
-		player.die()
-		SceneChanger.change_scene(death_destination)
-	else:
-		$HurtAudio.play()
+	if not Global.godmode:
+		hp -= 1
+		if hp >= 0:
+			hearts[hp].visible = false
+		if hp <= 0:
+			$DeadAudio.play()
+			player.die()
+			SceneChanger.change_scene(death_destination)
+		else:
+			$HurtAudio.play()
