@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://BebasNeue Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/ui/menus/DeathMenu.gd" type="Script" id=2]
 [ext_resource path="res://art/UI/Full Moon - background.png" type="Texture" id=3]
 [ext_resource path="res://art/characters/32x32 Heroes Down.png" type="Texture" id=4]
 [ext_resource path="res://src/ui/buttons/MainMenuButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sounds/menu/Victory.ogg" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 56
@@ -110,6 +111,7 @@ __meta__ = {
 [node name="MainMenuButton" parent="." instance=ExtResource( 5 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 autoplay = true
 [connection signal="pressed" from="RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="MainMenuButton" to="." method="_on_MainMenuButton_pressed"]

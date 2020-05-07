@@ -8,9 +8,9 @@ var _speed = 50
 const BOOST_MULTIPLIER = 2
 
 var attack_dist = 30
-var killer_dist = 150
-var sprint_dist = 300
-var run_dist = 500
+var killer_dist = 200
+var sprint_dist = 400
+var run_dist = 600
 var walk_dist = 650
 
 onready var chase_audio = [$ChaseAudioHandler/ChaseAudio1, $ChaseAudioHandler/ChaseAudio2, $ChaseAudioHandler/ChaseAudio3, $ChaseAudioHandler/ChaseAudio4]
@@ -43,6 +43,7 @@ func _physics_process(delta):
 				
 			if dist < attack_dist:
 				attack()
+				#TODO add HR increaser
 				$AttackAudio.play()
 				Global.enemy_aggression /= 2
 				attackCDTimer.start()
@@ -73,6 +74,9 @@ func _physics_process(delta):
 		else:
 			$AnimatedSprite.play("idle")
 
+func growl():
+	$GrowlAudio.play()
+	
 func chase(p_pos, severity = 1):
 	_dir = (p_pos - global_position).normalized()
 	_velocity = _speed * _dir * (1 + (Global.enemy_aggression * 0.01)) * severity

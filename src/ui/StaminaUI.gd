@@ -2,7 +2,7 @@ extends CanvasLayer
 
 var stamina = 100 setget set_stamina
 var stamina_refill_speed = 0.2
-var stamina_usage_speed = -0.8
+var stamina_usage_speed = -1.0
 var max_stamina = 100
 var current_color
 
@@ -16,7 +16,10 @@ func _ready():
 	current_color = bar.get_tint_under()
 	
 func _physics_process(delta):
-	change_stamina(stamina_refill_speed)
+	if timer.is_stopped():
+		change_stamina(stamina_refill_speed)
+	else:
+		change_stamina(stamina_refill_speed/2)
 
 func change_stamina(val = 0):
 	if val != 0:

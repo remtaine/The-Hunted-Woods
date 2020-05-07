@@ -30,6 +30,7 @@ wait_time = 0.2
 [node name="Control" type="CanvasLayer" parent="."]
 
 [node name="BlackColorRect" type="Sprite" parent="Control"]
+self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 469.894, 327.942 )
 scale = Vector2( 37.2677, 25.8426 )
 z_index = 4096

@@ -11,7 +11,7 @@ var growl_audios = []
  
 var tolerance = 4
 var player
-var enemy
+var enemy = 0
 
 func _ready():
 	Global.is_enemy_spawned = false
@@ -72,7 +72,7 @@ func _on_Branches_stepped_on():
 	$SteppedOnTimer.start()
 
 func _on_SteppedOnTimer_timeout():
-	if true:#Global.is_enemy_spawned:
+	if not Global.is_enemy_spawned:
 		randomize()
 		var r = randi() % 100
 		print("played with r of ", r)
@@ -82,8 +82,11 @@ func _on_SteppedOnTimer_timeout():
 			growl_audios[1].play()
 		else:
 			growl_audios[2].play()
-		$HeartrateDelayTimer.start()
-		noise_made()
+	else:
+		enemy.growl()
+	#TODO add dialogue trigger
+	$HeartrateDelayTimer.start()
+	noise_made()
 		
 func _on_HeartrateDelayTimer_timeout():
 	emit_signal("scared_by_noise")

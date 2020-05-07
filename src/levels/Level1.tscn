@@ -78,7 +78,6 @@ scale = Vector2( 4.44082, 1.88 )
 [node name="SoundHandlers" type="Node" parent="."]
 
 [node name="Ambiance" parent="SoundHandlers" instance=ExtResource( 1 )]
-volume_db = -25.0
 
 [node name="Infinilight" parent="." instance=ExtResource( 13 )]
 

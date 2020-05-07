@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/ui/buttons/MainMenuButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://BebasNeue Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://art/UI/Full Moon - background.png" type="Texture" id=3]
+[ext_resource path="res://src/ui/menus/CreditsMenu.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="InstructionsMenu" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="Full Moon - background" type="Sprite" parent="."]
+position = Vector2( 355.025, 469.449 )
+texture = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -68.4969
+margin_top = -37.7915
+margin_right = 1003.5
+margin_bottom = 704.208
+color = Color( 0.564706, 0.0941176, 0.647059, 0.584314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsLabel" type="Label" parent="."]
+margin_left = 320.0
+margin_top = 64.0
+margin_right = 661.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 1 )
+text = "Instructions"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArtLabel" type="Label" parent="."]
+margin_left = -224.0
+margin_top = 224.0
+margin_right = 1252.0
+margin_bottom = 436.0
+custom_fonts/font = SubResource( 2 )
+text = "You and your friend crashed, leaving you both unconscious. 
+Upon waking up, your friend is gone.
+The only thing left behind is a trail of her blood. 
+Can you rescue her?
+
+WASD/Arrow Keys to move
+Shift to run"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenuButton" parent="." instance=ExtResource( 1 )]
+margin_left = 352.0
+margin_top = 544.0
+margin_right = 652.0
+margin_bottom = 594.0
+
+[node name="LoadingLabel" type="Label" parent="."]
+margin_left = 672.0
+margin_top = 544.0
+margin_right = 772.0
+margin_bottom = 576.0
+custom_fonts/font = SubResource( 3 )
+text = "Loading..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_MainMenuButton_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://art/characters/PSF_HeroesA_Casual.png" type="Texture" id=1]
 [ext_resource path="res://src/characters/Player.gd" type="Script" id=2]
@@ -12,7 +12,8 @@
 [ext_resource path="res://src/ui/HealthUI.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/ui/StaminaUI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://sounds/player/damaged/Player death scream v1.wav" type="AudioStream" id=12]
-[ext_resource path="res://sounds/player/damaged/Player hurt scream v1-001.wav" type="AudioStream" id=13]
+[ext_resource path="res://sounds/player/damaged/Player hurt scream v1-002.wav" type="AudioStream" id=13]
+[ext_resource path="res://DialogueLabel.tscn" type="PackedScene" id=14]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
@@ -20,80 +21,19 @@ light_mode = 1
 [sub_resource type="RectangleShape2D" id=2]
 
 [sub_resource type="Animation" id=3]
-length = 0.001
-loop = true
-step = 0.2
+resource_name = "hurt"
+length = 0.8
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/path = NodePath("Sprite:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Flashlight:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( -12, -6.025 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Flashlight:rotation_degrees")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 90.0 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Flashlight:show_behind_parent")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.784314, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.784314, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.784314, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.784314, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -211,6 +151,83 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
+"values": [ 1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Flashlight:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -12, -6.025 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Flashlight:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Flashlight:show_behind_parent")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
 "values": [ 13 ]
 }
 tracks/3/type = "value"
@@ -250,7 +267,7 @@ tracks/5/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.001
 loop = true
 step = 0.2
@@ -327,7 +344,7 @@ tracks/5/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.001
 loop = true
 step = 0.2
@@ -404,7 +421,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.8
 loop = true
 step = 0.2
@@ -498,7 +515,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.8
 loop = true
 step = 0.2
@@ -592,7 +609,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.8
 loop = true
 step = 0.2
@@ -686,7 +703,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 0.8
 loop = true
 step = 0.2
@@ -800,16 +817,19 @@ position = Vector2( 0, -0.569584 )
 scale = Vector2( 1, 0.92 )
 shape = SubResource( 2 )
 
+[node name="HurtAnimation" type="AnimationPlayer" parent="."]
+anims/hurt = SubResource( 3 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 3 )
-anims/idle_down = SubResource( 4 )
-anims/idle_left = SubResource( 5 )
-anims/idle_right = SubResource( 6 )
-anims/idle_up = SubResource( 7 )
-anims/walk_down = SubResource( 8 )
-anims/walk_left = SubResource( 9 )
-anims/walk_right = SubResource( 10 )
-anims/walk_up = SubResource( 11 )
+anims/idle = SubResource( 4 )
+anims/idle_down = SubResource( 5 )
+anims/idle_left = SubResource( 6 )
+anims/idle_right = SubResource( 7 )
+anims/idle_up = SubResource( 8 )
+anims/walk_down = SubResource( 9 )
+anims/walk_left = SubResource( 10 )
+anims/walk_right = SubResource( 11 )
+anims/walk_up = SubResource( 12 )
 
 [node name="Flashlight" parent="." instance=ExtResource( 3 )]
 position = Vector2( -12, -6.025 )
@@ -863,4 +883,11 @@ stream = ExtResource( 13 )
 stream = ExtResource( 12 )
 
 [node name="StaminaUI" parent="." instance=ExtResource( 11 )]
+
+[node name="PauseMovementTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="DialogueLabel" parent="." instance=ExtResource( 14 )]
 [connection signal="input_event" from="." to="." method="_on_Player_input_event"]
+[connection signal="timeout" from="PauseMovementTimer" to="." method="_on_PauseMovementTimer_timeout"]

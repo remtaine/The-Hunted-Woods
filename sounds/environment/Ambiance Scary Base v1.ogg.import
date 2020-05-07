@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Ambiance Scary Base v1.ogg-6aa27decb87080ea571d245514316cad.oggstr"
+
+[deps]
+
+source_file="res://sounds/environment/Ambiance Scary Base v1.ogg"
+dest_files=[ "res://.import/Ambiance Scary Base v1.ogg-6aa27decb87080ea571d245514316cad.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -22,10 +22,11 @@ size = 40
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 40
+size = 24
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
+size = 12
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=7]
@@ -44,16 +45,16 @@ margin_left = -68.4969
 margin_top = -37.7915
 margin_right = 1003.5
 margin_bottom = 704.208
-color = Color( 0.27451, 0.266667, 0.878431, 0.584314 )
+color = Color( 0.145098, 0.141176, 0.34902, 0.584314 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CreditsLabel" type="Label" parent="."]
-margin_left = 384.0
-margin_top = 96.0
-margin_right = 582.0
-margin_bottom = 176.0
+margin_left = 400.0
+margin_top = 64.0
+margin_right = 598.0
+margin_bottom = 144.0
 custom_fonts/font = SubResource( 1 )
 text = "Credits"
 __meta__ = {
@@ -62,9 +63,9 @@ __meta__ = {
 
 [node name="ProgrammingLabel" type="Label" parent="."]
 margin_left = 256.0
-margin_top = 224.0
+margin_top = 160.0
 margin_right = 810.0
-margin_bottom = 272.0
+margin_bottom = 208.0
 custom_fonts/font = SubResource( 2 )
 text = "programming by efigi (efigi.itch.io)"
 __meta__ = {
@@ -72,10 +73,10 @@ __meta__ = {
 }
 
 [node name="SFXLabel" type="Label" parent="."]
-margin_left = 160.0
-margin_top = 285.798
-margin_right = 973.0
-margin_bottom = 333.798
+margin_left = 144.0
+margin_top = 221.798
+margin_right = 957.0
+margin_bottom = 269.798
 custom_fonts/font = SubResource( 3 )
 text = "sound effects by chanjohann (chanjohann.itch.io)"
 __meta__ = {
@@ -83,10 +84,10 @@ __meta__ = {
 }
 
 [node name="MusicLabel" type="Label" parent="."]
-margin_left = 160.0
-margin_top = 356.657
-margin_right = 909.0
-margin_bottom = 404.657
+margin_left = 152.0
+margin_top = 292.657
+margin_right = 901.0
+margin_bottom = 340.657
 custom_fonts/font = SubResource( 4 )
 text = "music by aaronpmus (twitter.com/aaronpmus)"
 __meta__ = {
@@ -94,43 +95,48 @@ __meta__ = {
 }
 
 [node name="ArtLabel" type="Label" parent="."]
-margin_left = -224.0
-margin_top = 418.068
-margin_right = 1252.0
-margin_bottom = 517.068
+margin_left = -256.0
+margin_top = 360.0
+margin_right = 1220.0
+margin_bottom = 572.0
 custom_fonts/font = SubResource( 5 )
-text = "Moonlight background from Alekei 
-(https://opengameart.org/content/background-night)"
+text = "tile and character art by malibudarby (https://malibudarby.itch.io/)
+Moonlight background from Alekei 
+(https://opengameart.org/content/background-night)
+Heart from DontMind8
+(https://opengameart.org/content/heart-pixel-art)"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CCLabel" type="Label" parent="."]
-margin_left = 224.0
+margin_left = 208.0
 margin_top = 512.0
-margin_right = 761.0
+margin_right = 745.0
 margin_bottom = 579.0
 custom_fonts/font = SubResource( 6 )
-text = "whose art is under CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)"
+text = "The art used from OpenGameArt is under CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MainMenuButton" parent="." instance=ExtResource( 1 )]
-margin_left = 332.345
-margin_top = 571.799
-margin_right = 632.345
-margin_bottom = 621.799
+margin_left = 344.0
+margin_top = 544.0
+margin_right = 644.0
+margin_bottom = 594.0
 
 [node name="LoadingLabel" type="Label" parent="."]
+anchor_right = 10.0
 margin_left = 672.0
-margin_top = 576.0
+margin_top = 550.0
 margin_right = 772.0
-margin_bottom = 608.0
+margin_bottom = 582.0
 custom_fonts/font = SubResource( 7 )
 text = "Loading..."
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

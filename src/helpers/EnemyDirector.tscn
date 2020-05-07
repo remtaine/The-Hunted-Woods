@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/helpers/EnemyDirector.gd" type="Script" id=1]
 [ext_resource path="res://sounds/screams/woman screaming v1-004.wav" type="AudioStream" id=2]
 [ext_resource path="res://sounds/screams/woman screaming v1-003.wav" type="AudioStream" id=3]
 [ext_resource path="res://sounds/screams/woman screaming v1-001.wav" type="AudioStream" id=4]
+[ext_resource path="res://sounds/enemy/Monster Breath v1-007.wav" type="AudioStream" id=5]
 [ext_resource path="res://art/placeholders/white.png" type="Texture" id=6]
 [ext_resource path="res://sounds/enemy/Monster Breath v1-003.wav" type="AudioStream" id=7]
 [ext_resource path="res://art/placeholders/blue.png" type="Texture" id=8]
@@ -18,6 +19,7 @@ one_shot = true
 autostart = true
 
 [node name="Screams" type="CanvasLayer" parent="."]
+follow_viewport_enable = true
 
 [node name="ScreamAudio1" type="AudioStreamPlayer2D" parent="Screams"]
 position = Vector2( 190.78, 335.729 )
@@ -47,10 +49,12 @@ visible = false
 texture = ExtResource( 6 )
 
 [node name="Growls" type="CanvasLayer" parent="."]
+follow_viewport_enable = true
 
 [node name="GrowlAudio1" type="AudioStreamPlayer2D" parent="Growls"]
-position = Vector2( 832.791, 517.269 )
+position = Vector2( 742.567, 463.955 )
 stream = ExtResource( 7 )
+max_distance = 1e+07
 attenuation = 0.25
 
 [node name="Sprite" type="Sprite" parent="Growls/GrowlAudio1"]
@@ -58,8 +62,9 @@ visible = false
 texture = ExtResource( 8 )
 
 [node name="GrowlAudio2" type="AudioStreamPlayer2D" parent="Growls"]
-position = Vector2( 823.947, 78.7481 )
-stream = ExtResource( 7 )
+position = Vector2( 723.471, 121.809 )
+stream = ExtResource( 5 )
+max_distance = 1e+07
 attenuation = 0.25
 
 [node name="Sprite" type="Sprite" parent="Growls/GrowlAudio2"]
@@ -67,8 +72,9 @@ visible = false
 texture = ExtResource( 8 )
 
 [node name="GrowlAudio3" type="AudioStreamPlayer2D" parent="Growls"]
-position = Vector2( 141.433, 80.2861 )
+position = Vector2( 248.061, 135.651 )
 stream = ExtResource( 9 )
+max_distance = 1e+07
 attenuation = 0.25
 
 [node name="Sprite" type="Sprite" parent="Growls/GrowlAudio3"]

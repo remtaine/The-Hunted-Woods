@@ -6,7 +6,8 @@ enum STATES {
 	RUN,
 	RESTING,
 	HURT,
-	DEAD
+	DEAD,
+	FROZEN
 }
 
 enum EVENTS {
@@ -16,13 +17,16 @@ enum EVENTS {
 	RUN,
 	REST,
 	HURT,
+	FREEZE,
 	DIE
 }
 
 const SPEEDS = {
 	STATES.IDLE: 0,
 	STATES.WALK: 150,
-	STATES.RUN: 250
+	STATES.RUN: 250,
+	STATES.DEAD: 0,
+	STATES.FROZEN: 0
 }
 
 const ANIM_SPEEDS = {
@@ -92,9 +96,12 @@ func _init():
 		[STATES.IDLE, EVENTS.DIE]: STATES.DEAD,
 		[STATES.WALK, EVENTS.DIE]: STATES.DEAD,
 		[STATES.RUN, EVENTS.DIE]: STATES.DEAD,
-		[STATES.IDLE, EVENTS.REST]: STATES.RESTING,
-		[STATES.WALK, EVENTS.REST]: STATES.RESTING,
-		[STATES.RUN, EVENTS.REST]: STATES.RESTING,
+		[STATES.IDLE, EVENTS.FREEZE]: STATES.FROZEN,
+		[STATES.WALK, EVENTS.FREEZE]: STATES.FROZEN,
+		[STATES.RUN, EVENTS.FREEZE]: STATES.FROZEN,
+		[STATES.FROZEN, EVENTS.RUN]: STATES.RUN,
+		[STATES.FROZEN, EVENTS.STOP]: STATES.IDLE,
+		[STATES.FROZEN, EVENTS.WALK]: STATES.WALK,
 		[STATES.RESTING, EVENTS.STOP]: STATES.IDLE,
 
 	}
@@ -106,14 +113,14 @@ func rest(val = true):
 	else:
 		change_state(EVENTS.STOP)
 		$Sprite.set_self_modulate(color)
+
 func _ready():
 #	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	animation_player.play("idle_down")
 #	note:try to change pos of player so origin at middle
 	
 func _physics_process(_delta):
-	print("CURRENTLY ANIMATING ", $AnimationPlayer.current_animation)
-	if _state != STATES.DEAD and _state != STATES.RESTING:
+	if _state != STATES.DEAD and _state != STATES.FROZEN:
 		inputs = get_raw_input()
 		var event = get_event(inputs)
 		change_state(event)
@@ -143,15 +150,22 @@ func _physics_process(_delta):
 				rotate_arc_light(inputs.dir)
 	else:
 		animation_player.play("idle_down")
+		if (_state == STATES.FROZEN):
+			rotate_arc_light()
 
 func update_hp(val = -1):
 	hp += val
 	$Health.update_hp_ui()
+	$HurtAnimation.play("hurt")
 	emit_signal("hp_updated")
 
 func die():
 	change_state(EVENTS.DIE)
 
+func pause_movement():
+	change_state(EVENTS.FREEZE)
+	$PauseMovementTimer.start()
+	
 func get_raw_input():
 	return {
 		dir = get_input_direction(),
@@ -160,6 +174,8 @@ func get_raw_input():
 	}
 	
 func get_event(input):
+	if not $PauseMovementTimer.is_stopped():
+		return EVENTS.FREEZE
 	if input.is_shooting:
 		return EVENTS.SHOOT
 	elif input.dir != Vector2.ZERO:
@@ -184,8 +200,9 @@ func get_normalized_angle(angle):
 		 
 func enter_state():
 	match _state:
-		STATES.DEAD, STATES.RESTING:
-			print("after changing state, animation is now ", animation_player.current_animation)
+		STATES.DEAD, STATES.FROZEN:
+			_speed = SPEEDS[_state]
+			change_facing_dir(_dir)
 		STATES.RUN:
 			Input.set_custom_mouse_cursor(Global.cursor_crossed)
 			_speed = SPEEDS[_state]
@@ -214,7 +231,7 @@ func enter_state():
 					animation_player.play("idle")
 	animation_player.set_speed_scale(_anim_speed)
 
-func change_facing_dir(dir):
+func change_facing_dir(dir = _dir):
 	_dir = dir
 	match dir:
 		DIR.DOWN:
@@ -248,7 +265,7 @@ func setup_camera_pos(dir):
 			flashlight.rotation_degrees = 0
 			pass
 
-func rotate_arc_light(new_dir):
+func rotate_arc_light(new_dir = Vector2.ZERO):
 	if new_dir == Vector2.ZERO:
 		var mouse_pos = get_global_mouse_position()
 		$ArcLightPosition.look_at(mouse_pos)
@@ -260,7 +277,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		match _state:
 			STATES.IDLE, STATES.WALK:
-				var angle = rotate_arc_light(DIR.NONE)	
+				var angle = rotate_arc_light()	
 				angle = get_normalized_angle(angle)
 				if _state == STATES.IDLE:
 					if angle > DIR_LIMITS[DIR.RIGHT][0] and angle < DIR_LIMITS[DIR.RIGHT][1]:
@@ -278,3 +295,7 @@ func _input(event):
 #				var angle = $ArcLightPosition.rotation_degrees
 #				angle = get_normalized_angle(angle)
 #				$ArcLightPosition.rotation_degrees = clamp(angle,FOV_LIMITS[_dir][0], FOV_LIMITS[_dir][1])
+
+
+func _on_PauseMovementTimer_timeout():
+	change_state(EVENTS.STOP)

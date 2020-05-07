@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/helpers/DialogueLabel.gd" type="Script" id=1]
+[ext_resource path="res://Bohemian Typewriter.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "hide_dialogue"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="DialogueLabel" type="Label"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -47.2074
+margin_top = -69.1321
+margin_right = 46.7926
+margin_bottom = -54.1321
+rect_min_size = Vector2( 0, 15 )
+custom_fonts/font = SubResource( 1 )
+text = "What was that?"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/hide_dialogue = SubResource( 2 )
