@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://art/object tilesets/32x32 Horror Green Forest.png" type="Texture" id=1]
 [ext_resource path="res://src/objects/Steppable.gd" type="Script" id=2]
 [ext_resource path="res://sounds/objects/cracking branch v1-005.wav" type="AudioStream" id=3]
+[ext_resource path="res://src/shaders/greyscale.shader" type="Shader" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[sub_resource type="CanvasItemMaterial" id=2]
-light_mode = 2
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 4 )
 
 [node name="Branches" type="Node2D"]
 script = ExtResource( 2 )

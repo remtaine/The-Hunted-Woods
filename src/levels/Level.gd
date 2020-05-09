@@ -9,6 +9,9 @@ onready var camera = player.get_node("ArcLightPosition").get_node("Camera2D")
 signal noise_made
 signal level_started
 
+func _init():
+	Global.enemy_aggression = 0
+	
 func _ready():
 #	Input.#set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Input.set_custom_mouse_cursor(Global.cursor)

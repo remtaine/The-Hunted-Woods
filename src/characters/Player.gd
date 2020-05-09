@@ -227,8 +227,7 @@ func enter_state():
 					animation_player.play("idle_right")
 				DIR.UP:
 					animation_player.play("idle_up")
-				DIR.NONE:
-					animation_player.play("idle")
+					
 	animation_player.set_speed_scale(_anim_speed)
 
 func change_facing_dir(dir = _dir):

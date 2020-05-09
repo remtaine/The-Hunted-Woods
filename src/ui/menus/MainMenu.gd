@@ -6,6 +6,9 @@ var credits_dest = "res://src/ui/menus/CreditsMenu.tscn"
 func _ready():
 	$LoadingLabel2.visible = false
 	
+func _physics_process(delta):
+	pass
+#	$SpriteHolder/ghost/AnimationPlayer.play("float")
 func _on_NewGameButton_pressed():
 	print("CLICKED")
 	$LoadingLabel.visible = true

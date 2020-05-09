@@ -10,7 +10,7 @@ var scream_audios = []
 var growl_audios = []
  
 var has_cried = false
-var tolerance = 4
+var tolerance = 5
 var player
 var enemy = 0
 

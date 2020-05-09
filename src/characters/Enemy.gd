@@ -4,14 +4,14 @@ var player
 var player_wr
 var _velocity
 var _dir
-var _speed = 50
+var _speed = 45
 const BOOST_MULTIPLIER = 1.5
 
 var attack_dist = 30
 var killer_dist = 200
-var sprint_dist = 400
-var run_dist = 600
-var walk_dist = 650
+var sprint_dist = 500
+var run_dist = 700
+var walk_dist = 750
 
 onready var chase_audio = [$ChaseAudioHandler/ChaseAudio1, $ChaseAudioHandler/ChaseAudio2, $ChaseAudioHandler/ChaseAudio3, $ChaseAudioHandler/ChaseAudio4]
 var is_chase_song_playing = [true, false, false,false]
@@ -52,7 +52,7 @@ func _physics_process(delta):
 				chase_audio[2].set_volume_db(0)
 				chase_audio[1].set_volume_db(0)
 				is_chase_song_playing[1] = true
-				chase(p_pos, 1.7)
+				chase(p_pos, 1.9)
 			elif dist < sprint_dist:
 				chase_audio[3].set_volume_db(-100)
 				chase_audio[2].set_volume_db(0)
@@ -63,12 +63,12 @@ func _physics_process(delta):
 				chase_audio[3].set_volume_db(-100)
 				chase_audio[2].set_volume_db(-100)
 				chase_audio[1].set_volume_db(0)
-				chase(p_pos, 1.4)
+				chase(p_pos, 1.5)
 			elif dist < walk_dist:
 				chase_audio[3].set_volume_db(-100)
 				chase_audio[2].set_volume_db(-100)
 				chase_audio[1].set_volume_db(-100)
-				chase(p_pos, 1.2)
+				chase(p_pos, 1.3)
 			else:
 				chase(p_pos)
 		else:

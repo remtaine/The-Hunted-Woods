@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/SoundHandlers/AmbianceSoundPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/levels/Level.gd" type="Script" id=2]
@@ -13,6 +13,12 @@
 [ext_resource path="res://src/custom tilesets/PlateauTileset.tres" type="TileSet" id=11]
 [ext_resource path="res://src/custom tilesets/DecorationTileset.tres" type="TileSet" id=12]
 [ext_resource path="res://src/helpers/Infinilight.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Bohemian Typewriter.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://src/objects/Branches.tscn" type="PackedScene" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 14 )
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 2 )
@@ -82,5 +88,77 @@ volume_db = -10.0
 
 [node name="Infinilight" parent="." instance=ExtResource( 13 )]
 
+[node name="Branches" parent="." instance=ExtResource( 15 )]
+position = Vector2( 552, 352 )
+
+[node name="Sprite" parent="Branches" index="2"]
+material = null
+
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 656.411, 612.896 )
+
+[node name="Instructions" type="Node2D" parent="."]
+position = Vector2( 656.411, 612.896 )
+
+[node name="Label1" type="Label" parent="Instructions"]
+self_modulate = Color( 1, 1, 1, 0.372549 )
+margin_left = -48.411
+margin_top = 19.104
+margin_right = 66.589
+margin_bottom = 38.104
+custom_fonts/font = SubResource( 1 )
+text = "WASD to move"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Instructions"]
+self_modulate = Color( 1, 1, 1, 0.372549 )
+margin_left = -240.411
+margin_top = -116.896
+margin_right = -99.411
+margin_bottom = -97.896
+custom_fonts/font = SubResource( 1 )
+text = "Mouse to aim light"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Instructions"]
+self_modulate = Color( 1, 1, 1, 0.372549 )
+margin_left = -168.411
+margin_top = -212.896
+margin_right = -9.41101
+margin_bottom = -193.896
+custom_fonts/font = SubResource( 1 )
+text = "Hold Shift to run"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Instructions"]
+self_modulate = Color( 1, 1, 1, 0.372549 )
+margin_left = -200.411
+margin_top = -308.896
+margin_right = -41.411
+margin_bottom = -289.896
+custom_fonts/font = SubResource( 1 )
+text = "Avoid making noise"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Instructions"]
+self_modulate = Color( 1, 1, 1, 0.372549 )
+margin_left = -144.411
+margin_top = -436.896
+margin_right = 15.589
+margin_bottom = -285.896
+custom_fonts/font = SubResource( 1 )
+text = "Follow the blood and save your friend"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="Branches"]
