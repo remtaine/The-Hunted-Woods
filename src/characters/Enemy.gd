@@ -4,7 +4,7 @@ var player
 var player_wr
 var _velocity
 var _dir
-var _speed = 45
+var _speed = 40
 const BOOST_MULTIPLIER = 1.5
 
 var attack_dist = 30

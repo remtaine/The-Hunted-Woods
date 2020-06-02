@@ -11,6 +11,7 @@ signal level_started
 
 func _init():
 	Global.enemy_aggression = 0
+	Global.godmode = false
 	
 func _ready():
 #	Input.#set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

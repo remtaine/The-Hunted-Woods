@@ -155,7 +155,7 @@ margin_top = -436.896
 margin_right = 15.589
 margin_bottom = -285.896
 custom_fonts/font = SubResource( 1 )
-text = "Follow the blood and save your friend"
+text = "Follow the trail and save your friend"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

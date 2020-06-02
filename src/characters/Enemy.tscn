@@ -165,6 +165,6 @@ one_shot = true
 
 [node name="GrowlAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
-volume_db = 15.0
+volume_db = 10.0
 [connection signal="timeout" from="AgressionTimer" to="." method="_on_AgressionTimer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
